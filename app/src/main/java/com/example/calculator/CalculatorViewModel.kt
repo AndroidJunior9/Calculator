@@ -18,6 +18,8 @@ class CalculatorViewModel: ViewModel() {
         }else if(char in "+-×÷") {
             if (expression.value.isNotEmpty()) {
                 val lastChar = expression.value.last()
+
+                // if last char is an operator, replace it with the new operator
                 if (lastChar in "+-×÷") {
                     expression.value = expression.value.dropLast(1)
                 }
@@ -27,6 +29,7 @@ class CalculatorViewModel: ViewModel() {
             if (expression.value.isNotEmpty()) {
                 val lastChar = expression.value.last()
                 if (lastChar!='.') {
+                    // if last char is an operator, and the current char is a dot, add a zero before the dot
                     if (lastChar in "+-×÷") {
                         expression.value += "0"
                     }
@@ -37,6 +40,7 @@ class CalculatorViewModel: ViewModel() {
         }else if(char =="("){
             if (expression.value.isNotEmpty()) {
                 val lastChar = expression.value.last()
+                // if last char is not a operator, add a multiplication operator before the parenthesis
                 if (lastChar !in "+-×÷") {
                     expression.value += "×"
                 }
